@@ -8,22 +8,7 @@
 import UIKit
 
 final class CalculatorView: UIView {
-    
-    // MARK: - Colors
-    private let customBlueColor = UIColor(
-        red: 0.11,
-        green: 0.61,
-        blue: 0.96,
-        alpha: 1.00
-    )
-    
-    private let customOrangeColor = UIColor(
-        red: 1.00,
-        green: 0.58,
-        blue: 0.00,
-        alpha: 1.00
-    )
-    
+        
     // MARK: - Private UI Properties
     private lazy var mainStackView: UIStackView = {
         var mainSV = createStackView(with: .vertical)
@@ -83,7 +68,7 @@ final class CalculatorView: UIView {
     private lazy var devideButton: UIButton = {
         var devideButton = createButton(
             text: "÷",
-            color: customOrangeColor
+            color: UIColor.customOrangeColor
         )
         return devideButton
     }()
@@ -99,24 +84,24 @@ final class CalculatorView: UIView {
     }()
     
     private lazy var sevenButton: UIButton = {
-        var acButton = createButton(text: "7", color: customBlueColor)
+        var acButton = createButton(text: "7", color: UIColor.customBlueColor)
         return acButton
     }()
     
     private lazy var eightButton: UIButton = {
-        var plusMinusButton = createButton(text: "8", color: customBlueColor)
+        var plusMinusButton = createButton(text: "8", color: UIColor.customBlueColor)
         return plusMinusButton
     }()
     
     private lazy var nineButton: UIButton = {
-        var procentButton = createButton(text: "9", color: customBlueColor)
+        var procentButton = createButton(text: "9", color: UIColor.customBlueColor)
         return procentButton
     }()
     
     private lazy var multiplyButton: UIButton = {
         var devideButton = createButton(
             text: "×",
-            color: customOrangeColor
+            color: UIColor.customOrangeColor
         )
         return devideButton
     }()
@@ -132,24 +117,24 @@ final class CalculatorView: UIView {
     }()
     
     private lazy var fourButton: UIButton = {
-        var fourButton = createButton(text: "4", color: customBlueColor)
+        var fourButton = createButton(text: "4", color: UIColor.customBlueColor)
         return fourButton
     }()
     
     private lazy var fiveButton: UIButton = {
-        var fiveButton = createButton(text: "5", color: customBlueColor)
+        var fiveButton = createButton(text: "5", color: UIColor.customBlueColor)
         return fiveButton
     }()
     
     private lazy var sixButton: UIButton = {
-        var sixButton = createButton(text: "6", color: customBlueColor)
+        var sixButton = createButton(text: "6", color: UIColor.customBlueColor)
         return sixButton
     }()
     
     private lazy var minusButton: UIButton = {
         var minusButton = createButton(
             text: "-",
-            color: customOrangeColor
+            color: UIColor.customOrangeColor
         )
         return minusButton
     }()
@@ -165,24 +150,24 @@ final class CalculatorView: UIView {
     }()
     
     private lazy var oneButton: UIButton = {
-        var oneButton = createButton(text: "1", color: customBlueColor)
+        var oneButton = createButton(text: "1", color: UIColor.customBlueColor)
         return oneButton
     }()
     
     private lazy var twoButton: UIButton = {
-        var twoButton = createButton(text: "2", color: customBlueColor)
+        var twoButton = createButton(text: "2", color: UIColor.customBlueColor)
         return twoButton
     }()
     
     private lazy var threeButton: UIButton = {
-        var threeButton = createButton(text: "3", color: customBlueColor)
+        var threeButton = createButton(text: "3", color: UIColor.customBlueColor)
         return threeButton
     }()
     
     private lazy var plusButton: UIButton = {
         var plusButton = createButton(
             text: "+",
-            color: customOrangeColor
+            color: UIColor.customOrangeColor
         )
         return plusButton
     }()
@@ -198,7 +183,7 @@ final class CalculatorView: UIView {
     }()
     
     private lazy var zeroButton: UIButton = {
-        var procentButton = createButton(text: "0", color: customBlueColor)
+        var procentButton = createButton(text: "0", color: UIColor.customBlueColor)
         return procentButton
     }()
     
@@ -212,12 +197,12 @@ final class CalculatorView: UIView {
     }()
     
     private lazy var dotButton: UIButton = {
-        var procentButton = createButton(text: ".", color: customBlueColor)
+        var procentButton = createButton(text: ".", color: UIColor.customBlueColor)
         return procentButton
     }()
     
     private lazy var equalButton: UIButton = {
-        var procentButton = createButton(text: "=", color: customOrangeColor)
+        var procentButton = createButton(text: "=", color: UIColor.customBlueColor)
         return procentButton
     }()
     
@@ -227,6 +212,7 @@ final class CalculatorView: UIView {
         self.addSubview(mainStackView)
         numberView.addSubview(numberLabel)
         setupConstraints()
+        self.backgroundColor = .black
     }
     
     required init?(coder: NSCoder) {
