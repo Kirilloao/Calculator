@@ -23,7 +23,10 @@ final class MainViewController: UIViewController {
     // MARK: - Private Methods
     private func setupConstraints() {
         calculatorView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
 }
