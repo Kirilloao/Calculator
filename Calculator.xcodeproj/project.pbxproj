@@ -12,6 +12,8 @@
 		3C82C0292AD6BA6100575FEF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C82C0282AD6BA6100575FEF /* MainViewController.swift */; };
 		3C82C02E2AD6BA6100575FEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C82C02D2AD6BA6100575FEF /* Assets.xcassets */; };
 		3C82C0312AD6BA6100575FEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C82C02F2AD6BA6100575FEF /* LaunchScreen.storyboard */; };
+		3C82C03D2AD6BBCE00575FEF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3C82C03C2AD6BBCE00575FEF /* SnapKit */; };
+		3C82C0402AD6BBFE00575FEF /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C82C03F2AD6BBFE00575FEF /* CalculatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,7 @@
 		3C82C02D2AD6BA6100575FEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C82C0302AD6BA6100575FEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C82C0322AD6BA6100575FEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C82C03F2AD6BBFE00575FEF /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C82C03D2AD6BBCE00575FEF /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,9 +58,10 @@
 		3C82C0232AD6BA6100575FEF /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				3C82C0392AD6BB6500575FEF /* SupportingFiles */,
+				3C82C03E2AD6BBDF00575FEF /* Views */,
 				3C82C0382AD6BB5D00575FEF /* Controllers */,
 				3C82C03A2AD6BB7300575FEF /* Resources */,
+				3C82C0392AD6BB6500575FEF /* SupportingFiles */,
 				3C82C0322AD6BA6100575FEF /* Info.plist */,
 			);
 			path = Calculator;
@@ -88,6 +93,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		3C82C03E2AD6BBDF00575FEF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3C82C03F2AD6BBFE00575FEF /* CalculatorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -104,6 +117,9 @@
 			dependencies = (
 			);
 			name = Calculator;
+			packageProductDependencies = (
+				3C82C03C2AD6BBCE00575FEF /* SnapKit */,
+			);
 			productName = Calculator;
 			productReference = 3C82C0212AD6BA6100575FEF /* Calculator.app */;
 			productType = "com.apple.product-type.application";
@@ -132,6 +148,9 @@
 				Base,
 			);
 			mainGroup = 3C82C0182AD6BA6100575FEF;
+			packageReferences = (
+				3C82C03B2AD6BBCE00575FEF /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 3C82C0222AD6BA6100575FEF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -158,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C82C0402AD6BBFE00575FEF /* CalculatorView.swift in Sources */,
 				3C82C0292AD6BA6100575FEF /* MainViewController.swift in Sources */,
 				3C82C0252AD6BA6100575FEF /* AppDelegate.swift in Sources */,
 				3C82C0272AD6BA6100575FEF /* SceneDelegate.swift in Sources */,
@@ -368,6 +388,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3C82C03B2AD6BBCE00575FEF /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3C82C03C2AD6BBCE00575FEF /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C82C03B2AD6BBCE00575FEF /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3C82C0192AD6BA6100575FEF /* Project object */;
 }
