@@ -16,7 +16,7 @@ https://www.udemy.com/course/ios-13-app-development-bootcamp/learn/lecture/11860
 * NoStoryboard
 * SnapKit
 
-## Video demonstration of the application
+## Video demonstration
 <p align="center">
   <img src="https://github.com/Kirilloao/Calculator/blob/main/ezgif.com-video-to-gif.gif" width="300"/>
 </p>
