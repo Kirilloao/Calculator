@@ -8,7 +8,28 @@
 import UIKit
 
 final class CalculatorView: UIView {
-        
+    
+    // MARK: - Public Properties
+    var displayValue: Double {
+        get {
+            guard  let number = Double(numberLabel.text!) else {
+                fatalError("Cannot conver number label text to a Double!")
+            }
+            return number
+            
+        }
+        set {
+            numberLabel.text = String(newValue)
+        }
+    }
+    
+    // MARK: - Closures
+    var numberButtonAction: ((String) -> Void)?
+    var calculateButtonAction: ((String, Double) -> Void)?
+    
+    // MARK: - Private Properties
+    private var isFinishedTypingNumber = true
+    
     // MARK: - Private UI Properties
     private lazy var mainStackView: UIStackView = {
         var mainSV = createStackView(with: .vertical)
@@ -51,59 +72,85 @@ final class CalculatorView: UIView {
     }()
     
     private lazy var acButton: UIButton = {
-        var acButton = createButton(text: "AC", color: .darkGray)
+        var acButton = createCustomButton(
+            text: "AC",
+            color: .darkGray,
+            action: #selector(calculateButtonDidTapped)
+        )
         return acButton
     }()
     
     private lazy var plusMinusButton: UIButton = {
-        var plusMinusButton = createButton(text: "+/-", color: .darkGray)
+        var plusMinusButton = createCustomButton(
+            text: "+/-",
+            color: .darkGray,
+            action: #selector(calculateButtonDidTapped)
+        )
         return plusMinusButton
     }()
     
     private lazy var procentButton: UIButton = {
-        var procentButton = createButton(text: "%", color: .darkGray)
+        var procentButton = createCustomButton(
+            text: "%",
+            color: .darkGray,
+            action: #selector(calculateButtonDidTapped)
+        )
         return procentButton
     }()
     
     private lazy var devideButton: UIButton = {
-        var devideButton = createButton(
+        var devideButton = createCustomButton(
             text: "÷",
-            color: UIColor.customOrangeColor
+            color: UIColor.customOrangeColor,
+            action: #selector(calculateButtonDidTapped)
         )
         return devideButton
     }()
     
     // MARK: - SecondStackView
     private lazy var secondStackView: UIStackView = {
-        var firstSV = createStackView()
+        var secondSV = createStackView()
         addArrungedSubviewTo(
-            stackView: firstSV,
+            stackView: secondSV,
             subviews: sevenButton, eightButton, nineButton, multiplyButton
         )
-        return firstSV
+        return secondSV
     }()
     
     private lazy var sevenButton: UIButton = {
-        var acButton = createButton(text: "7", color: UIColor.customBlueColor)
-        return acButton
+        var sevenButton = createCustomButton(
+            text: "7",
+            color: UIColor.customBlueColor,
+            action: #selector(numberButtonDidTapped)
+        )
+        return sevenButton
     }()
     
     private lazy var eightButton: UIButton = {
-        var plusMinusButton = createButton(text: "8", color: UIColor.customBlueColor)
-        return plusMinusButton
+        var eightButton = createCustomButton(
+            text: "8",
+            color: UIColor.customBlueColor,
+            action: #selector(numberButtonDidTapped)
+        )
+        return eightButton
     }()
     
     private lazy var nineButton: UIButton = {
-        var procentButton = createButton(text: "9", color: UIColor.customBlueColor)
-        return procentButton
+        var nineButton = createCustomButton(
+            text: "9",
+            color: UIColor.customBlueColor,
+            action: #selector(numberButtonDidTapped)
+        )
+        return nineButton
     }()
     
     private lazy var multiplyButton: UIButton = {
-        var devideButton = createButton(
+        var multiplyButton = createCustomButton(
             text: "×",
-            color: UIColor.customOrangeColor
+            color: UIColor.customOrangeColor,
+            action: #selector(calculateButtonDidTapped)
         )
-        return devideButton
+        return multiplyButton
     }()
     
     // MARK: - ThirdStackView
@@ -117,24 +164,37 @@ final class CalculatorView: UIView {
     }()
     
     private lazy var fourButton: UIButton = {
-        var fourButton = createButton(text: "4", color: UIColor.customBlueColor)
+        var fourButton = createCustomButton(
+            text: "4",
+            color: UIColor.customBlueColor,
+            action: #selector(numberButtonDidTapped)
+        )
         return fourButton
     }()
     
     private lazy var fiveButton: UIButton = {
-        var fiveButton = createButton(text: "5", color: UIColor.customBlueColor)
+        var fiveButton = createCustomButton(
+            text: "5",
+            color: UIColor.customBlueColor,
+            action: #selector(numberButtonDidTapped)
+        )
         return fiveButton
     }()
     
     private lazy var sixButton: UIButton = {
-        var sixButton = createButton(text: "6", color: UIColor.customBlueColor)
+        var sixButton = createCustomButton(
+            text: "6",
+            color: UIColor.customBlueColor,
+            action: #selector(numberButtonDidTapped)
+        )
         return sixButton
     }()
     
     private lazy var minusButton: UIButton = {
-        var minusButton = createButton(
+        var minusButton = createCustomButton(
             text: "-",
-            color: UIColor.customOrangeColor
+            color: UIColor.customOrangeColor,
+            action: #selector(calculateButtonDidTapped)
         )
         return minusButton
     }()
@@ -150,24 +210,37 @@ final class CalculatorView: UIView {
     }()
     
     private lazy var oneButton: UIButton = {
-        var oneButton = createButton(text: "1", color: UIColor.customBlueColor)
+        var oneButton = createCustomButton(
+            text: "1",
+            color: UIColor.customBlueColor,
+            action: #selector(numberButtonDidTapped)
+        )
         return oneButton
     }()
     
     private lazy var twoButton: UIButton = {
-        var twoButton = createButton(text: "2", color: UIColor.customBlueColor)
+        var twoButton = createCustomButton(
+            text: "2",
+            color: UIColor.customBlueColor,
+            action: #selector(numberButtonDidTapped)
+        )
         return twoButton
     }()
     
     private lazy var threeButton: UIButton = {
-        var threeButton = createButton(text: "3", color: UIColor.customBlueColor)
+        var threeButton = createCustomButton(
+            text: "3",
+            color: UIColor.customBlueColor,
+            action: #selector(numberButtonDidTapped)
+        )
         return threeButton
     }()
     
     private lazy var plusButton: UIButton = {
-        var plusButton = createButton(
+        var plusButton = createCustomButton(
             text: "+",
-            color: UIColor.customOrangeColor
+            color: UIColor.customOrangeColor,
+            action: #selector(calculateButtonDidTapped)
         )
         return plusButton
     }()
@@ -183,8 +256,12 @@ final class CalculatorView: UIView {
     }()
     
     private lazy var zeroButton: UIButton = {
-        var procentButton = createButton(text: "0", color: UIColor.customBlueColor)
-        return procentButton
+        var zeroButton = createCustomButton(
+            text: "0",
+            color: UIColor.customBlueColor,
+            action: #selector(numberButtonDidTapped)
+        )
+        return zeroButton
     }()
     
     private lazy var smallStackView: UIStackView = {
@@ -197,26 +274,70 @@ final class CalculatorView: UIView {
     }()
     
     private lazy var dotButton: UIButton = {
-        var procentButton = createButton(text: ".", color: UIColor.customBlueColor)
-        return procentButton
+        var dotButton = createCustomButton(
+            text: ".",
+            color: UIColor.customBlueColor,
+            action: #selector(numberButtonDidTapped)
+        )
+        return dotButton
     }()
     
     private lazy var equalButton: UIButton = {
-        var procentButton = createButton(text: "=", color: UIColor.customBlueColor)
-        return procentButton
+        var equalButton = createCustomButton(
+            text: "=",
+            color: UIColor.customOrangeColor,
+            action: #selector(calculateButtonDidTapped)
+        )
+        return equalButton
     }()
     
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .black
         self.addSubview(mainStackView)
         numberView.addSubview(numberLabel)
         setupConstraints()
-        self.backgroundColor = .black
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Public Methods
+    func setNumberLabel(_ text: String) {
+        if isFinishedTypingNumber {
+            numberLabel.text = text
+        } else {
+            if text == "." {
+                let isInt = floor(displayValue) == displayValue
+                if !isInt {
+                    return
+                }
+            }
+            numberLabel.text = (numberLabel.text ?? "") + text
+        }
+    }
+    
+    func changeFinishedBoolValue(_ boolValue: Bool) {
+        isFinishedTypingNumber = boolValue
+    }
+    
+    func setNumberText(_ text: Double) {
+        displayValue = text
+    }
+    
+    // MARK: - Private Actions
+    @objc private func numberButtonDidTapped(sender: UIButton) {
+        if let numValue = sender.currentTitle {
+            numberButtonAction?(numValue)
+        }
+    }
+    
+    @objc private func calculateButtonDidTapped(sender: UIButton) {
+        if let numValue = sender.currentTitle {
+            calculateButtonAction?(numValue, displayValue)
+        }
     }
     
     // MARK: - Private Methods
@@ -242,18 +363,23 @@ final class CalculatorView: UIView {
         return stackView
     }
     
-    private func createButton(text: String, color: UIColor) -> UIButton {
+    private func addArrungedSubviewTo(stackView: UIStackView, subviews: UIView...) {
+        subviews.forEach { button in
+            stackView.addArrangedSubview(button)
+        }
+    }
+    
+    private func createCustomButton(text: String, color: UIColor, action: Selector) -> UIButton {
         let customButton = UIButton(type: .system)
         customButton.setTitle(text, for: .normal)
         customButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         customButton.backgroundColor = color
         customButton.setTitleColor(.white, for: .normal)
+        customButton.addTarget(
+            self,
+            action: action,
+            for: .touchUpInside
+        )
         return customButton
-    }
-    
-    private func addArrungedSubviewTo(stackView: UIStackView, subviews: UIView...) {
-        subviews.forEach { button in
-            stackView.addArrangedSubview(button)
-        }
     }
 }
