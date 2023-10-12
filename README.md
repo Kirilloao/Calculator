@@ -1,10 +1,24 @@
-# Calculator
+# Calculator app
 
-1. **Course**: iOS & Swift - The Complete iOS App Development Bootcamp
+## Course
+iOS & Swift - The Complete iOS App Development Bootcamp
 
-2. **Lesson**: Section 22
+https://www.udemy.com/course/ios-13-app-development-bootcamp/
 
-3. **UIKit, MVC, NoStoryboard, SnapKit**
+## Lesson
+Section 22
 
+https://www.udemy.com/course/ios-13-app-development-bootcamp/learn/lecture/11860548#overview
+
+## Tecnical Stack:
+* UIKit
+* MVC
+* NoStoryboard
+* SnapKit
+
+## Video demonstration of the application
+<p align="center">
+  <img src="https://github.com/Kirilloao/Calculator/blob/main/ezgif.com-video-to-gif.gif" width="300"/>
+</p>
    
-![ezgif com-video-to-gif](https://github.com/Kirilloao/Calculator/assets/106522858/f5ff6e9d-8717-47a6-b144-dce838616852)
+
